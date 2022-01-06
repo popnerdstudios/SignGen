@@ -1,5 +1,5 @@
 var word1 = ["big", "jelly", "fun", "blue", "quick", "sweet", "john's", "cyborg", "nexus", "robot", "comic", "dark", "magic", "medical", "legal", "safe", "trippy", "water", "metal", "mars", "space", "dust", "death", "free", "used", "adult", "proton", "salted", "loud", "evil", "boring", "research", "quantum"];
-var word2 = ["fish", "burgers", "antiques", "seafood", "diner", "hut", "shack", "gifts", "vpn", "movies", "sports", "university", "plaza", "medicine", "cyborgs", "spaceships", "rockets", "mining", "coffee", "hovertech", "physics", "universe", "donuts", "phones", "hub", "parking", "code", "tea", "shoes", "cab", "cart"];
+var word2 = ["fish", "burgers", "antiques", "seafood", "diner", "hut", "shack", "gifts", "vpn", "movies", "sports", "university", "plaza", "medicine", "cyborgs", "spaceships", "rockets", "mining", "coffee", "hovertech", "physics", "universe", "donuts", "phones", "hub", "parking", "code", "tea", "shoes", "cab", "cart", "store", "bar", "books", "music"];
 var word3 = ["open 24/7", "limited offer", "on sale", " ", " ", " "];
 var fontSize = ["80px ", "85px "]
 var smallFonts = ["50px ", "60px "]
@@ -10,7 +10,7 @@ var fontType1 = [ "Abel", "Abril Fatface", "Aclonica", "Advent Pro", "Aguafina S
 "Artifika", "Arya", "asapvfbeta", "Astloch", "Atomic Age", "Audiowide","Averia Libre", "Bad Script", 
 "Bahiana","Baloo", "Baloo Bhai", "Barlow", "Barrio", "Bentham","Biryani", "Black Ops One", "Buenard"];
 
-var fontType = ["Bungee","Chewy", "Coda","Codystar","Concert One", "Dokdo", "Eater", "Fascinate", "Flamenco", "Flavors", "Fruktur", "Gaegu", "Geostar","Goblin One", "Hanalei", "Jaldi","Jolly Lodger", "K2D", "La Belle Aurore", "Lobster", "Mystery Quest", "Orbitron", "Oswald"];
+var fontType = ["Bungee","Chewy", "Coda","Codystar","Concert One", "Dokdo", "Eater", "Fascinate", "Flamenco", "Flavors", "Fruktur", "Gaegu", "Goblin One", "Hanalei", "Jaldi","Jolly Lodger", "K2D", "La Belle Aurore", "Lobster", "Mystery Quest", "Orbitron", "Oswald"];
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -46,66 +46,35 @@ function getRandomVal(){
 }
 
 //COLORS
-function getSimilarColor(r, g, b){
-    rand = getRandomInt(2);
-    if(rand == 0){
-        r = getRandomVal();
-        g = getRandomVal();
-    }
-    else if(rand == 1){
-        g = getRandomVal();
-        b = getRandomVal();
-    }
-    else if(rand == 2){
-        b = getRandomVal();
-        r = getRandomVal();
-    }
-    return `rgb(${r},${g},${b})`;
-}
-
-function getOppositeColor(r, g, b){
-    var randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
-    if(r > 200){
-        //r = 0;
-        g = getRandomVal();
-        b = getRandomVal();
-    }
-    if(g > 200){
-        //g = 0;
-        r = getRandomVal();
-        b = getRandomVal();
-    }
-    if(b > 200){
-       // b = 0;
-        g = getRandomVal();
-        r = getRandomVal();
-    }
-    else{
-        return getRandomRgb();
-    }
-    return `rgb(${r},${g},${b})`;
-}
 
 function randomRelation(r, g, b){
-    /*
-    val = getRandomInt(2);
+    
+    val = getRandomInt(3);
     if(val == 0){
-        return getSimilarColor(r, g, b);
+        //return getSimilarColor(r, g, b);
+        r = r+80;
+        g = g+80;
+        b = b+80;
     }
-    else{
-        return getOppositeColor(r, g, b);
+    else if(val == 1){
+        //return getOppositeColor(r, g, b);
+        r = r+200;
+        g = g+200;
+        b = b+200;
     }
-    */
-
-    r = r+80;
-    g = g+80;
-    b = b+80;
+    else if(val == 2){
+        //return getOppositeColor(r, g, b);
+        r = r-80;
+        g = g-80;
+        b = b-80;
+    }
+    
     return `rgb(${r},${g},${b})`;
 
 
 }
 
-function refresh(canvas) {
+function refresh_default(canvas) {
     var canvas_a = document.getElementById(canvas);
     var ctx_a = canvas_a.getContext("2d");
     ctx_a.clearRect(0, 0, 633, 291);
@@ -208,19 +177,27 @@ function refresh(canvas) {
     ctx_a.fillText(text_c, canvas_a.width/2, canvas_a.height/1.2);
 }
 
-refresh("canvas_a");
-refresh("canvas_b");
-refresh("canvas_c");
-refresh("canvas_d");
-refresh("canvas_e");
-refresh("canvas_f");
-refresh("canvas_g");
-refresh("canvas_h");
-button.addEventListener("click", function(){refresh("canvas_a"); });
-button.addEventListener("click", function(){refresh("canvas_b"); });
-button.addEventListener("click", function(){refresh("canvas_c"); });
-button.addEventListener("click", function(){refresh("canvas_d"); });
-button.addEventListener("click", function(){refresh("canvas_e"); });
-button.addEventListener("click", function(){refresh("canvas_f"); });
-button.addEventListener("click", function(){refresh("canvas_g"); });
-button.addEventListener("click", function(){refresh("canvas_h"); });
+i = 0;
+while(i<50){
+    refresh_default("canvas_a");
+    refresh_default("canvas_b");
+    refresh_default("canvas_c");
+    refresh_default("canvas_d");
+    refresh_default("canvas_e");
+    refresh_default("canvas_f");
+    refresh_default("canvas_g");
+    refresh_default("canvas_h");
+    refresh_default("canvas_i");
+    i = i+1;
+}
+
+
+button.addEventListener("click", function(){refresh_default("canvas_a"); });
+button.addEventListener("click", function(){refresh_default("canvas_b"); });
+button.addEventListener("click", function(){refresh_default("canvas_c"); });
+button.addEventListener("click", function(){refresh_default("canvas_d"); });
+button.addEventListener("click", function(){refresh_default("canvas_e"); });
+button.addEventListener("click", function(){refresh_default("canvas_f"); });
+button.addEventListener("click", function(){refresh_default("canvas_g"); });
+button.addEventListener("click", function(){refresh_default("canvas_h"); });
+button.addEventListener("click", function(){refresh_default("canvas_i"); });
